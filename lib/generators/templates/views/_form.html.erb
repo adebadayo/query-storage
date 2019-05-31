@@ -1,0 +1,29 @@
+<%= form_for(query, :local => true) do |form| %>
+  <% if query.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(query.errors.count, "error") %> prohibited this query from being saved:</h2>
+
+      <ul>
+      <% query.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, :id => :query_title, :size => "100"  %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :sql %>
+    <%= form.text_area :sql, :id => :query_sql, :size => "100x30" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
