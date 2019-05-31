@@ -39,7 +39,6 @@ class QueriesController < ApplicationController
   # POST /queries
   # POST /queries.json
   def create
-    debugger
     @query = Query.new(params[:query])
     # update,insert文だと思われる場合は登録を禁止する。
     if QueryStorage.is_insert_or_update_sql(@query.sql)
@@ -123,7 +122,6 @@ class QueriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def query_params
-      debugger
       params.require(:query).permit(:title, :sql, :category_id)
     end
 end
