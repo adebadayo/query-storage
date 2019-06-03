@@ -5,11 +5,11 @@ require "query_storage/version"
 Gem::Specification.new do |s|
   s.name        = "query_storage"
   s.version     = QueryStorage::VERSION
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
-  s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.authors     = ["Keisuke Nakama"]
+  s.email       = [""]
+  s.homepage    = "https://github.com/adebadayo/query-storage"
+  s.summary     = %q{}
+  s.description = %q{I will write this section when I finish creating this gem}
 
   s.rubyforge_project = "query_storage"
 
