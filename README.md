@@ -3,7 +3,7 @@
 
 I will write README when I finish creating this gem
 
-## Set up query View,Controller,Model
+## Set up View,Controller,Model
 
 ```
 rails generate query_storage:install query
