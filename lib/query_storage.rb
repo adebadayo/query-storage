@@ -22,6 +22,14 @@ module QueryStorage
       return csv_data
     end
 
+    def get_csv_data_array list, key_order=nil
+      key_order ||= list.map(&:keys).flatten.uniq
+      arr = list.map do |hash|
+        key_order.map{|key| hash[key]}
+      end
+      arr.unshift(key_order).map{|a| a.join(", ").insert(-1, "\n") }.join
+    end
+
     def get_tsv_data input_data, has_header=false
       tsv_data = CSV.generate("", :headers => input_data[0].keys, :write_headers => has_header, :col_sep => "\t") do |tsv|
         input_data.each_with_index do |record, index|

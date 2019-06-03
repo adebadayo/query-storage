@@ -19,8 +19,7 @@ class QueriesController < ApplicationController
     @query = Query.find_by_id(params[:id])
     sql = @query.sql
     @result = QueryStorage.execute_sql(sql)
-    # has_header = true
-    # @csv_date = QueryStorage.get_csv_data(@result, has_header)
+    # @csv_date = QueryStorage.get_csv_data_array(@result)
     # @tsv_date = QueryStorage.get_tsv_data(@result, has_header)
     @header = @result[0].keys
     @result = Kaminari.paginate_array(@result.to_a).page(params[:page]).per(1000)
@@ -93,9 +92,8 @@ class QueriesController < ApplicationController
   def download_csv
     query = Query.find_by_id(params[:id])
     result = QueryStorage.execute_sql(query.sql)
-    has_header = true
-    csv_data = QueryStorage.get_csv_data(result, has_header)
-    csv_data = csv_data.encode(Encoding::SJIS, :invalid => :replace, :undef => :replace)
+    csv_data = QueryStorage.get_csv_data_array(result)
+    # csv_data = csv_data.encode(Encoding::SJIS, :invalid => :replace, :undef => :replace)
     respond_to do |format|
       format.html
       format.csv { send_data csv_data, :type => 'text/csv; charset=shift_jis', :filename => query.title+".csv" }
